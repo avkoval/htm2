@@ -20,7 +20,7 @@
      :id "signup"
      :hidden {:on-error "/"}}
     (biff/recaptcha-callback "submitSignup" "signup")
-    [:h2.text-2xl.font-bold (str "Sign up for " settings/app-name)]
+    [:h2.text-2xl.font-bold (str "Sign up for \"" settings/app-name "\"")]
     [:.h-3]
     [:.flex
      [:input#email {:name "email"

@@ -1,0 +1,17 @@
+* What is this
+
+Another attempt to build tactical meeting manager application, now using https://biffweb.com/
+
+* Work plan
+** TODO Remove tailwind, use Bulma
+   :LOGBOOK:
+   - State "TODO"       from              [2025-01-07 Tue 21:38]
+   :END:
+** TODO Add alpinejs
+   :LOGBOOK:
+   - State "TODO"       from              [2025-01-07 Tue 21:38]
+   :END:
+** TODO Add Google oauth
+   :LOGBOOK:
+   - State "TODO"       from              [2025-01-07 Tue 21:38]
+   :END:
