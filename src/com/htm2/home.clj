@@ -12,7 +12,7 @@
    "Until you add API keys for MailerSend and reCAPTCHA, we'll print your sign-up "
    "link to the console. See config.edn."])
 
-(defn home-page [{:keys [recaptcha/site-key params] :as ctx}]
+(defn home-page2 [{:keys [recaptcha/site-key params] :as ctx}]
   (ui/page
    (assoc ctx ::ui/recaptcha true)
    (biff/form
@@ -50,6 +50,17 @@
     [:.h-3]
     biff/recaptcha-disclosure
     email-disabled-notice)))
+
+(defn home-page [{:keys [recaptcha/site-key params] :as ctx}]
+  (ui/page
+   ctx
+   [:section.section
+    [:.container
+     [:h1.title "Hello World!"]
+     [:p.subtitle "My second website with " [:strong " Bulma"] "!"]]
+    ]
+   ))
+
 
 (defn link-sent [{:keys [params] :as ctx}]
   (ui/page

@@ -11,12 +11,16 @@ Run `clj -M:dev dev` to get started. See `clj -M:dev --help` for other commands.
 Consider adding `alias biff='clj -M:dev'` to your `.bashrc`.
 
 * Work plan
-** TODO Remove tailwind, use Bulma
+** DONE Remove tailwind, use Bulma
+   CLOSED: [2025-01-08 Wed 11:06]
    :LOGBOOK:
+   - State "DONE"       from "TODO"       [2025-01-08 Wed 11:06]
    - State "TODO"       from              [2025-01-07 Tue 21:38]
    :END:
-** TODO Add alpinejs
+** DONE Add alpinejs
+   CLOSED: [2025-01-08 Wed 11:07]
    :LOGBOOK:
+   - State "DONE"       from "TODO"       [2025-01-08 Wed 11:07]
    - State "TODO"       from              [2025-01-07 Tue 21:38]
    :END:
 ** TODO Add Google oauth
