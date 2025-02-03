@@ -9,7 +9,8 @@
         org.slf4j/slf4j-simple     {:mvn/version "2.0.0-alpha5"}
         org.slf4j/log4j-over-slf4j {:mvn/version "1.7.36"}
         org.slf4j/jul-to-slf4j     {:mvn/version "1.7.36"}
-        org.slf4j/jcl-over-slf4j   {:mvn/version "1.7.36"}}
+        org.slf4j/jcl-over-slf4j   {:mvn/version "1.7.36"}
+        ring-oauth2/ring-oauth2 {:mvn/version "0.3.0"}}
  :aliases
  {:dev {:extra-deps {com.biffweb/tasks {:git/url "https://github.com/jacobobryant/biff", :git/sha "6b29a1884c5cfd2b24e1afc4d85bca24455db287", :deps/root "libs/tasks"}}
         :extra-paths ["dev" "test"]
@@ -20,4 +21,5 @@
   :prod {:jvm-opts ["-XX:-OmitStackTraceInFastThrow"
                     "-XX:+CrashOnOutOfMemoryError"
                     "-Dbiff.env.BIFF_PROFILE=prod"]
-         :main-opts ["-m" "com.htm2"]}}}
+         :main-opts ["-m" "com.htm2"]}}
+}

@@ -22,8 +22,12 @@
    schema/module
    worker/module])
 
+(def oauth2-routes )
+
+
 (def routes [["" {:middleware [mid/wrap-site-defaults]}
               (keep :routes modules)]
+;;              ["/oauth2/google/log-in"  {:middleware [mid/wrap-site-defaults]}]
              ["" {:middleware [mid/wrap-api-defaults]}
               (keep :api-routes modules)]])
 

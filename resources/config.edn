@@ -49,4 +49,13 @@
  :biff.tasks/deploy-cmd ["git" "push" "prod" "master"]
  ;; Uncomment this line if you have any ssh-related problems:
  ;; :biff.tasks/skip-ssh-agent true
+ :oauth2/providers ["google"]
+ :oauth2/google-authorize-uri     "https://accounts.google.com/o/oauth2/auth"
+ :oauth2/google-access-token-uri  "https://accounts.google.com/o/oauth2/token"
+ :oauth2/google-client-id          #biff/env GOOGLE_OAUTH2_CLIENT_ID
+ :oauth2/google-client-secret      #biff/secret GOOGLE_OAUTH2_CLIENT_SECRET
+ :oauth2/google-scopes             ["https://www.googleapis.com/auth/userinfo.email"]
+ :oauth2/google-redirect-uri       "/oauth2/google/callback"
+ :oauth2/google-launch-uri         "/oauth2/google/log-in"
+ :oauth2/google-landing-url        "/logged-in"
  }

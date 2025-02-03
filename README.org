@@ -4,11 +4,26 @@ Another attempt to build tactical meeting manager application, now using https:/
 
 ** Biff starter project
 
-This is the starter project for Biff.
+*** Run
 
-Run `clj -M:dev dev` to get started. See `clj -M:dev --help` for other commands.
+ This is the starter project for Biff.
 
-Consider adding `alias biff='clj -M:dev'` to your `.bashrc`.
+ Run:
+
+ #+begin_example
+ clj -M:dev dev
+ #+end_example
+
+ to get started. See `clj -M:dev --help` for other commands.
+
+ Consider adding `alias biff='clj -M:dev'` to your `.bashrc`.
+
+** Refresh running code
+
+ In the file repl.clj run:
+ #+begin_example
+ (main/refresh)
+ #+end_example
 
 * Work plan
 ** DONE Remove tailwind, use Bulma
@@ -25,5 +40,62 @@ Consider adding `alias biff='clj -M:dev'` to your `.bashrc`.
    :END:
 ** TODO Add Google oauth
    :LOGBOOK:
+   CLOCK: [2025-02-02 Sun 08:07]--[2025-02-02 Sun 09:20] =>  1:13
+   CLOCK: [2025-01-19 Sun 07:49]--[2025-01-19 Sun 10:34] =>  2:45
+   CLOCK: [2025-01-18 Sat 12:33]--[2025-01-18 Sat 12:58] =>  0:25
+   CLOCK: [2025-01-13 Mon 07:47]--[2025-01-13 Mon 09:51] =>  2:04
+   CLOCK: [2025-01-12 Sun 08:46]--[2025-01-12 Sun 09:20] =>  0:34
+   CLOCK: [2025-01-11 Sat 14:29]--[2025-01-11 Sat 14:30] =>  0:01
    - State "TODO"       from              [2025-01-07 Tue 21:38]
+   CLOCK: [2025-01-10 Fri 09:09]--[2025-01-10 Fri 09:11] =>  0:02
+   CLOCK: [2025-01-10 Fri 08:53]--[2025-01-10 Fri 09:00] =>  0:07
+   CLOCK: [2025-01-10 Fri 07:14]--[2025-01-10 Fri 07:30] =>  0:16
    :END:
+
+  https://github.com/weavejester/ring-oauth2
+
+ Its said its "ring middleware". Reading, how to embed this into my app. Starting reading from: https://github.com/ring-clojure/ring
+ - [ ] what is ring middleware? what is typical use cases?
+ - [ ] do I have ring server in ~biff~ ?
+ - [ ] where is the correct place in app code to add this middleware?
+
+ [2025-01-12 Sun]
+ - Reading concepts: https://github.com/ring-clojure/ring/wiki/Concepts
+ - https://lambdaisland.com/episodes/passwordless-authentication-ring-oauth2
+ - https://github.com/kelveden/ring-jwt
+ - https://github.com/green-coder/reitit-oauth2
+ - https://clojurians.slack.com/archives/C0A5GSC6T/p1723490472867279
+ - https://stackoverflow.com/questions/32076503/using-postman-to-access-oauth-2-0-google-apis found URIs example here
+ - scopes: https://developers.google.com/identity/protocols/oauth2/scopes
+
+ [2025-01-18 Sat], [2025-01-19 Sun]
+ - [X] Add credentials in google developers console
+ - [ ] Configure middleware directly in code, do not commit!
+ - [ ] Integrate middleware pages
+ - [ ] Use credentials from config.edn & config.env
+ - [ ] Commit
+
+* Planned Features [0/15]
+  :PROPERTIES:
+  :COOKIE_DATA: recursive
+  :END:
+
+ - Identification & Authorization
+   - [ ] Google Auth
+ - Permissions:
+   - User can
+     - [ ] Join existing team (or several)
+     - [ ] See meetings calendar
+     - [ ] Join meeting (if started)
+   - Admin can
+     - [ ] Manage teams
+       - [ ] allow people/domains to join
+       - [ ] manage team 
+       - [ ] add registered people manually
+     - [ ] Manage invites
+     - [ ] Manage allowed email domains per team
+ - [ ] User Registration
+ - [ ] Add team
+ - [ ] Add user
+ - [ ] menu + burger + alpinejs
+ - [ ] use calendar from https://doc.mh-s.de/bulma-calendar/demonstration/date/

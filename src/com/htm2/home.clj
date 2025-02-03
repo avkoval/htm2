@@ -57,7 +57,8 @@
    [:section.section
     [:.container
      [:h1.title "Hello World!"]
-     [:p.subtitle "My second website with " [:strong " Bulma"] "!"]]
+     [:p.subtitle "My second website with " [:strong " Bulma"] "!"]
+     [:a {:href "/oauth2/google/log-in"} "Login with Google"]]
     ]
    ))
 
@@ -69,6 +70,7 @@
    [:p "We've sent a sign-in link to " [:span.font-bold (:email params)] "."]))
 
 (defn verify-email-page [{:keys [params] :as ctx}]
+
   (ui/page
    ctx
    [:h2.text-2xl.font-bold (str "Sign up for " settings/app-name)]
@@ -174,10 +176,23 @@
             {:type "submit"})
      "Send another code"])))
 
+(defn logged-in [ctx]
+  (biff/pprint (get-in ctx [:session :ring.middleware.oauth2/access-tokens :google :token]))
+  (ui/page
+   ctx
+   [:section.section
+    [:.container
+     [:h1.title "Logged in!"]
+     ]
+    ]
+   ))
+
+
 (def module
   {:routes [["" {:middleware [mid/wrap-redirect-signed-in]}
              ["/"                  {:get home-page}]]
             ["/link-sent"          {:get link-sent}]
             ["/verify-link"        {:get verify-email-page}]
             ["/signin"             {:get signin-page}]
+            ["/logged-in"          {:get logged-in}]
             ["/verify-code"        {:get enter-code-page}]]})
