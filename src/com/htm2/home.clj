@@ -5,7 +5,10 @@
             [com.htm2.ui :as ui]
             [com.htm2.settings :as settings]
             [rum.core :as rum]
-            [xtdb.api :as xt]))
+            [xtdb.api :as xt]
+            [starfederation.datastar.clojure.api :as d*]
+            [starfederation.datastar.clojure.adapter.ring :refer [->sse-response]]
+            ))
 
 (def email-disabled-notice
   [:.text-sm.mt-3.bg-blue-100.rounded.p-2
@@ -177,15 +180,20 @@
      "Send another code"])))
 
 (defn logged-in [ctx]
-  (biff/pprint (get-in ctx [:session :ring.middleware.oauth2/access-tokens :google :token]))
-  (ui/page
-   ctx
-   [:section.section
-    [:.container
-     [:h1.title "Logged in!"]
-     ]
-    ]
-   ))
+  (let [response (http/get "https://openidconnect.googleapis.com/v1/userinfo" 
+                         {:as :json
+                          :headers {:Authorization (str "Bearer " (get-in ctx [:session :ring.middleware.oauth2/access-tokens :google :token]))}})
+        ctx2 (assoc-in ctx [:session :userinfo :email] (get response :body))
+        ]
+    (biff/pprint (get-in ctx2 [:session :userinfo]))
+    (ui/page
+     ctx2
+     [:section.section
+      [:.container
+       [:h1.title "Logged in!"]
+       ]
+      ]
+     )))
 
 
 (def module

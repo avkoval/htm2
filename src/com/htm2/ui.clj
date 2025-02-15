@@ -38,6 +38,7 @@
                                      [:script {:src "/js/htmx.min.js"}]
                                      [:script {:src "/js/ws.js"}]
                                      [:script {:src "/js/alpinejs.min.js" :defer "defer"}]
+                                     [:script {:src "/js/datastar-1-0-0-beta-4-d2aa6231657c2382.js"}]
                                      (when recaptcha
                                        [:script {:src "https://www.google.com/recaptcha/api.js"
                                                  :async "async" :defer "defer"}])]

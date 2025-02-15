@@ -10,7 +10,16 @@
         org.slf4j/log4j-over-slf4j {:mvn/version "1.7.36"}
         org.slf4j/jul-to-slf4j     {:mvn/version "1.7.36"}
         org.slf4j/jcl-over-slf4j   {:mvn/version "1.7.36"}
-        ring-oauth2/ring-oauth2 {:mvn/version "0.3.0"}}
+        ring-oauth2/ring-oauth2 {:mvn/version "0.3.0"}
+
+        ;; datastar
+        datastar/sdk {:git/url "https://github.com/starfederation/datastar/"
+              :git/sha "1004107c93b0522805c0f5e0578755b2ceebbcb7"
+              :deps/root "sdk/clojure/sdk"}
+        datastar/ring {:git/url "https://github.com/starfederation/datastar/"
+               :git/sha "1004107c93b0522805c0f5e0578755b2ceebbcb7"
+               :deps/root "sdk/clojure/adapter-ring"}
+        }
  :aliases
  {:dev {:extra-deps {com.biffweb/tasks {:git/url "https://github.com/jacobobryant/biff", :git/sha "6b29a1884c5cfd2b24e1afc4d85bca24455db287", :deps/root "libs/tasks"}}
         :extra-paths ["dev" "test"]

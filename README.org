@@ -38,8 +38,10 @@ Another attempt to build tactical meeting manager application, now using https:/
    - State "DONE"       from "TODO"       [2025-01-08 Wed 11:07]
    - State "TODO"       from              [2025-01-07 Tue 21:38]
    :END:
-** TODO Add Google oauth
+** WORKING Add Google oauth
    :LOGBOOK:
+   - State "WORKING"    from "TODO"       [2025-02-09 Sun 11:25]
+   CLOCK: [2025-02-07 Fri 21:49]--[2025-02-07 Fri 22:04] =>  0:15
    CLOCK: [2025-02-02 Sun 08:07]--[2025-02-02 Sun 09:20] =>  1:13
    CLOCK: [2025-01-19 Sun 07:49]--[2025-01-19 Sun 10:34] =>  2:45
    CLOCK: [2025-01-18 Sat 12:33]--[2025-01-18 Sat 12:58] =>  0:25
@@ -55,9 +57,9 @@ Another attempt to build tactical meeting manager application, now using https:/
   https://github.com/weavejester/ring-oauth2
 
  Its said its "ring middleware". Reading, how to embed this into my app. Starting reading from: https://github.com/ring-clojure/ring
- - [ ] what is ring middleware? what is typical use cases?
- - [ ] do I have ring server in ~biff~ ?
- - [ ] where is the correct place in app code to add this middleware?
+ - [X] what is ring middleware? what is typical use cases?
+ - [X] do I have ring server in ~biff~ ?
+ - [X] where is the correct place in app code to add this middleware?
 
  [2025-01-12 Sun]
  - Reading concepts: https://github.com/ring-clojure/ring/wiki/Concepts
@@ -71,9 +73,35 @@ Another attempt to build tactical meeting manager application, now using https:/
  [2025-01-18 Sat], [2025-01-19 Sun]
  - [X] Add credentials in google developers console
  - [ ] Configure middleware directly in code, do not commit!
- - [ ] Integrate middleware pages
- - [ ] Use credentials from config.edn & config.env
+ - [ ] Integrate middleware pages - redirect to login when not logged in, redirect to logged in part from top URL
+   like in Django @login_required decorator
+ - [X] Use credentials from config.edn & config.env
+ - [-] after log in: 
+   - [-] set userinfo
+     - [X] set as whole at stage1
+     - [ ] email address or even db uid?
+   - [ ] redirect to main page and show 'logged in as ... / log out button'
  - [ ] Commit
+
+ - https://funcool.github.io/buddy-sign/latest/01-jwt.html
+ - https://blog.jakubholy.net/2023/accessing-google-api-from-clojure/
+
+** WORKING replace alpinejs and htmx with datastar!
+   :LOGBOOK:
+   CLOCK: [2025-02-09 Sun 14:37]--[2025-02-09 Sun 17:23] =>  2:46
+   - State "WORKING"    from "TODO"       [2025-02-09 Sun 13:45]
+   CLOCK: [2025-02-09 Sun 13:46]--[2025-02-09 Sun 14:07] =>  0:21
+   - State "TODO"       from              [2025-02-09 Sun 11:40]
+   :END:
+
+ - [X] download & put into static
+ - [ ] add processor
+ - [ ] try with some simple example
+
+** TODO make plan of next steps & screens
+   :LOGBOOK:
+   - State "TODO"       from              [2025-02-09 Sun 12:55]
+   :END:
 
 * Planned Features [0/15]
   :PROPERTIES:
