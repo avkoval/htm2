@@ -8,6 +8,7 @@
             [xtdb.api :as xt]
             [starfederation.datastar.clojure.api :as d*]
             [starfederation.datastar.clojure.adapter.ring :refer [->sse-response]]
+            [ring.util.response :refer [redirect] :as response]
             ))
 
 (def email-disabled-notice
@@ -54,7 +55,8 @@
     biff/recaptcha-disclosure
     email-disabled-notice)))
 
-(defn home-page [{:keys [recaptcha/site-key params] :as ctx}]
+(defn home-page [{:keys [recaptcha/site-key params session] :as ctx}]
+  (biff/pprint (get session :user-email))
   (ui/page
    ctx
    [:section.section
@@ -180,20 +182,27 @@
      "Send another code"])))
 
 (defn logged-in [ctx]
-  (let [response (http/get "https://openidconnect.googleapis.com/v1/userinfo" 
+  (let [response (http/get "https://openidconnect.googleapis.com/v1/userinfo"
                          {:as :json
                           :headers {:Authorization (str "Bearer " (get-in ctx [:session :ring.middleware.oauth2/access-tokens :google :token]))}})
-        ctx2 (assoc-in ctx [:session :userinfo :email] (get response :body))
+        ctx2 (assoc-in ctx [:session :user-email] (get-in response [:body :email]))
         ]
-    (biff/pprint (get-in ctx2 [:session :userinfo]))
-    (ui/page
-     ctx2
-     [:section.section
-      [:.container
-       [:h1.title "Logged in!"]
-       ]
-      ]
-     )))
+    ;; (biff/pprint (get-in ctx2 [:session :user-email]))
+    (biff/pprint (get-in response [:body :email]))
+    ;; (ui/page
+    ;;  ctx2
+    ;;  [:section.section
+    ;;   [:.container
+    ;;    [:h1.title "Logged in!"]
+    ;;    ]
+    ;;   ]
+    ;;  )
+
+    ;;(redirect "/")
+    {:status 303
+     :headers {"location" "/"}
+     :session (get ctx2 :session)}
+    ))
 
 
 (def module

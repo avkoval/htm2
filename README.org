@@ -85,6 +85,7 @@ Another attempt to build tactical meeting manager application, now using https:/
 
  - https://funcool.github.io/buddy-sign/latest/01-jwt.html
  - https://blog.jakubholy.net/2023/accessing-google-api-from-clojure/
+ - [ ] How to set session key?
 
 ** WORKING replace alpinejs and htmx with datastar!
    :LOGBOOK:

@@ -8,14 +8,15 @@
 
 (defn wrap-redirect-signed-in [handler]
   (fn [{:keys [session] :as ctx}]
-    (if (some? (:uid session))
+    (if (some? (:user-email session))
       {:status 303
        :headers {"location" "/app"}}
       (handler ctx))))
 
 (defn wrap-signed-in [handler]
   (fn [{:keys [session] :as ctx}]
-    (if (some? (:uid session))
+    (biff/pprint (:user-email session))
+    (if (some? (:user-email session))
       (handler ctx)
       {:status 303
        :headers {"location" "/signin?error=not-signed-in"}})))

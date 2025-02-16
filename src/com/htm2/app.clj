@@ -92,10 +92,10 @@
       (map message (sort-by :msg/sent-at #(compare %2 %1) messages))]]))
 
 (defn app [{:keys [session biff/db] :as ctx}]
-  (let [{:user/keys [email foo bar]} (xt/entity db (:uid session))]
+  (let [{:user/keys [foo bar]} (xt/entity db (:uid session))]
     (ui/page
      {}
-     [:div "Signed in as " email ". "
+     [:div "Signed in as " (:user-email session) ". "
       (biff/form
        {:action "/auth/signout"
         :class "inline"}
