@@ -61,7 +61,7 @@
    ctx
    [:section.section
     [:.container
-     [:h1.title "Hello World!"]
+     [:h1.title "Hello!"]
      [:p.subtitle "My second website with " [:strong " Bulma"] "!"]
      [:a {:href "/oauth2/google/log-in"} "Login with Google"]]
     ]
