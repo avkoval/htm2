@@ -99,14 +99,16 @@ Another attempt to build tactical meeting manager application, now using https:/
  - [ ] add processor
  - [ ] try with some simple example
 
-** WORKING Try datastar
+** DONE Try datastar
+   CLOSED: [2025-02-25 Tue 08:55]
    :LOGBOOK:
+   - State "DONE"       from "WORKING"    [2025-02-25 Tue 08:55]
    - State "WORKING"    from              [2025-02-22 Sat 18:25]
    :END:
 
- - [ ] Integrate Bulma responsive menu using datastar
+ - [X] Integrate Bulma responsive menu using datastar
  - [ ] Try some backend signal
- - [ ] Try some backend fragment
+ - [X] Try some backend fragment [2025-02-25 Tue 08:55] *Works!*
 
 ** TODO make plan of next steps & screens
    :LOGBOOK:

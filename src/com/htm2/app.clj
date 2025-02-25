@@ -6,7 +6,9 @@
             [rum.core :as rum]
             [xtdb.api :as xt]
             [ring.adapter.jetty9 :as jetty]
-            [cheshire.core :as cheshire]))
+            [cheshire.core :as cheshire]
+            [starfederation.datastar.clojure.api :as d*]
+            [starfederation.datastar.clojure.adapter.ring :refer [->sse-response]]))
 
 (defn set-foo [{:keys [session params] :as ctx}]
   (biff/submit-tx ctx
@@ -135,10 +137,24 @@
      [:section.section
       [:div.container
        [:h1.title "Hello World!!"]]]
-     [:div "Signed in as " (:user-email session) ". "
-
-      "."]
+     [:div {:id "question"} "[The placeholder for question]"]
+     [:button {:data-on-click "@get('/app/sse-test')"} "Ask a question"]
+     
      )))
+
+(defn sse-test [request]
+  ;; Create a SSE response
+  (println "ook-2025-02-25-1740466060")
+  (->sse-response request
+   {:on-open
+    (fn [sse]
+      ;; Merge html fragments into the DOM
+      (d*/merge-fragment! sse
+        "<div id=\"question\">What do you put in a toaster?</div>")
+
+      ;; Merge signals into the signals
+      ;; (d*/merge-signals! sse "{response: '', answer: 'bread'}")
+      )}))
 
 (defn ws-handler [{:keys [com.htm2/chat-clients] :as ctx}]
   {:status 101
@@ -168,6 +184,7 @@
             ["" {:get app}]
             ["/set-foo" {:post set-foo}]
             ["/set-bar" {:post set-bar}]
+            ["/sse-test" {:get sse-test}]
             ["/chat" {:get ws-handler}]]
    :api-routes [["/api/echo" {:post echo}]]
    :on-tx notify-clients})
